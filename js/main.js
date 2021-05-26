@@ -72,24 +72,22 @@ window.onload = () => {
                     imgControl.src = x;
                     control.classList.add("active")
                     rightBtn.addEventListener("click", () => {
-                            info++;
-                            info %= items.length,
-                                x = items[info].src,
-                                imgControl.src = x;
-                            infoBtn.innerHTML = `${info+1} / ${items.length}`
-                        }),
-                        leftBtn.addEventListener("click", () => {
-                            if (info < 1) {
-                                return;
-                            }
-                            info--;
-                            info %= items.length;
+                        info++;
+                        info %= items.length,
                             x = items[info].src,
-                                imgControl.src = x;
-                            infoBtn.innerHTML = `${info+1} / ${items.length}`
-
-                        })
-
+                            imgControl.src = x;
+                        infoBtn.innerHTML = `${info+1} / ${items.length}`
+                    });
+                    leftBtn.addEventListener("click", () => {
+                        if (info < 1) {
+                            return 0;
+                        }
+                        info--;
+                        info %= items.length;
+                        x = items[info].src,
+                            imgControl.src = x;
+                        infoBtn.innerHTML = `${info+1} / ${items.length}`
+                    })
                 })),
                 closeBtn.addEventListener("click", () => {
                     control.classList.remove("active")
@@ -133,45 +131,9 @@ window.onload = () => {
                 slideItem()
             })
             wrapTeam.addEventListener("mouseup", () => {
-                    flag = false;
-                    slideItem()
-                })
-                // const grabSlide = document.querySelector(e);
-                // const wrap = document.querySelector(".wrap__team");
-                // const items = document.querySelectorAll(".item__team");
-
-            // let isDown = false;
-            // let startX;
-            // let scrollLeft;
-            // let size = items[0].offsetWidth; //lấy chiều rộng của mỗi phần tử 
-            // function slideItem() {
-            //     index = Math.round(wrap.scrollLeft / size);
-            //     wrap.style.scrollBehavior = "smooth";
-            //     wrap.scrollLeft = size * index;
-
-            // }
-            // wrap.addEventListener('mousedown', (e) => {
-            //     isDown = true;
-            //     startX = e.pageX - wrap.offsetLeft; //this value will take x at first
-            //     scrollLeft = wrap.scrollLeft; //this value will take scroll left at first
-            //     wrap.style.scrollBehavior = 'unset';
-            // })
-            // wrap.addEventListener('mouseleave', () => {
-            //     isDown = false;
-            //     slideItem();
-            // })
-            // wrap.addEventListener('mouseup', () => {
-            //     isDown = false;
-            //     slideItem();
-            // })
-            // wrap.addEventListener('mousemove', (e) => {
-            //     if (!isDown) return;
-            //     e.preventDefault();
-            //     //transfrom slide by grab and move left right
-            //     const x = e.pageX - wrap.offsetLeft;
-            //     const walk = x - startX;
-            //     wrap.scrollLeft = scrollLeft - walk;
-            // })
+                flag = false;
+                slideItem()
+            })
         }
     }
     team.init();
